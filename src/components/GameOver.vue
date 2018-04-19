@@ -31,6 +31,8 @@ export default {
         element.show = true;
       }, 1000 * idx * 3);
     });
+    let sound = new Audio("/static/audio/youwin.wav");
+    sound.play();
   }
 };
 </script>
@@ -38,7 +40,7 @@ export default {
 <style scoped>
 .main-container {
   padding: 5px 20px;
-  background-image: url("../assets/img/road.gif");
+  background-image: url("/static/img/road.gif");
   background-size: cover;
   border-bottom: 2px solid white;
   height: 100vh;
@@ -49,7 +51,7 @@ export default {
 }
 .slides {
   margin-top: 25vw;
-  color:white;
+  color: white;
 }
 .guide {
   display: flex;
@@ -92,5 +94,4 @@ export default {
 .bounce {
   animation: bounce 2s infinite;
 }
-
 </style>

@@ -10,7 +10,6 @@
             <li  v-for="(answer,i) in question.answers" :key="i" class="answer" :value="answer.id"
               ref="answer" @click="checkAnswer(answer.id)">{{answer.body}}</li>
           </transition-group>
-          <!-- <button @click.prevent="playSound()">play</button> -->
           <div class="categories">
             <h1 :class="{'cat-completed': cat.completed}" v-for="cat in categories" :key="cat.value">{{cat.value}} 
               <i :class="{'completed': cat.completed}" class="fas fa-thumbs-up"></i>
@@ -48,8 +47,13 @@ export default {
         { value: "מדריך הישרדות", completed: false }
       ],
       incheck: false,
-      playrWin: false
+      playrWin: false,
+      sound: null
     };
+  },
+  created() {
+    this.sound = new Audio("/static/audio/backgroundmusic.mp3");
+    this.sound.play();
   },
   methods: {
     checkAnswer(id) {
@@ -63,10 +67,19 @@ export default {
       GameService.sendAnswer(answerJson, this.token)
         .then(res => {
           if (res.game_completed) {
+            this.sound.pause()
             this.playrWin = true;
             return;
           }
-          res.response ? this.getNextQuest(res) : this.showRightAnswer(res);
+          if (res.response) {
+            let sound = new Audio("/static/audio/correct.m4a");
+            sound.play();
+            this.getNextQuest(res);
+          } else {
+            let sound = new Audio("/static/audio/worng.wav");
+            sound.play();
+            this.showRightAnswer(res);
+          }
         })
         .catch(err => {
           throw err;
@@ -116,9 +129,9 @@ export default {
     currCat() {
       return this.$store.getters[GET_CURR_CAT];
     },
-      question() {
+    question() {
       return this.$store.getters[GET_CURR_QUEST];
-    },
+    }
   },
   components: {
     VideoPage,
@@ -158,7 +171,7 @@ export default {
   clip-path: polygon(0% 22%, 100% 0%, 99% 98%, 0 100%);
   cursor: pointer;
   max-width: 60vw;
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 .answer,
@@ -209,10 +222,12 @@ export default {
   opacity: 0;
 }
 
-.list-enter-active, .list-leave-active {
+.list-enter-active,
+.list-leave-active {
   transition: all 1.3s;
 }
-.list-enter, .list-leave-to{
+.list-enter,
+.list-leave-to {
   opacity: 0;
   transform: translateY(30px);
 }
@@ -226,6 +241,4 @@ export default {
     padding: 4vw 2vw;
   }
 }
-
-
 </style>

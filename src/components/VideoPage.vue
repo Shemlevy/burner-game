@@ -2,7 +2,7 @@
   <div>
     <div class="video-conatiner">
       <video height="100%" autoplay loop>
-        <source src="../assets/img/Nowhere/MP4/Nowhere.mp4" type="video/mp4">
+        <source src="/static/img/Nowhere/MP4/Nowhere.mp4" type="video/mp4">
       </video>
     </div>
   </div>

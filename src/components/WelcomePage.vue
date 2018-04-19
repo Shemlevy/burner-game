@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .container {
-  background-image: url("../assets/img/bgwelcome.jpg");
+  background-image: url("/static/img/bgwelcome.jpg");
   background-size: cover;
   height: 100vh;
 }

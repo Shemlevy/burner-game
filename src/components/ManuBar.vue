@@ -6,7 +6,7 @@
           <a href="http://midburn.org/he-survival-guide/" target="_blank"><i class="fab fa-studiovinari"></i></a>
         </div>
         <h1 class="title">מידברן - שאלון ההישרדות</h1>
-        <img class="logo" src="../assets/img/logo.png"/>
+        <img class="logo" src="/static/img/logo.png"/>
       </div>
   </div>
 </template>
