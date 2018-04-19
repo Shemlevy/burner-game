@@ -2,26 +2,21 @@
 
 > The Ten Principles of Midburn
 
-## Build Setup
+This is the frontend application of https://games.midburn.org. The backend application repo can be found at https://github.com/midburn/burner-games
+Burner games is a simple trivia game developed by the midburn.org organization volunteers as an educational step for the Midburn organization ticketing system. While playing the game, the participants will be questioned about Midburn 10 principeles which are the primary guidance of the Midburn Organization.
 
-``` bash
-# install dependencies
-npm install
+Our goal is to educate all Midburn events participants about the 10 principles, the events' vibe and explain the participants' behavior in a simple, fun & humoristic way.
 
-# serve with hot reload at localhost:8080
-npm run dev
+What's in it?
 
-# build for production with minification
-npm run build
+Simple src/index.jsx and src/index.css (local module css).
 
-# build for production and view the bundle analyzer report
-npm run build --report
+Webpack configuration for development (with hot reloading) and production (with minification).
 
-# run unit tests
-npm run unit
+Clone the repository and cd into the repo folder.
 
-# run all tests
-npm test
-```
+Install Dependencies (using yarn or NPM)
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+
