@@ -35,12 +35,12 @@ export default {
   align-items: center;
 }
 .fab {
-  color: rgb(255, 255, 255);
+  color: rgb(51, 45, 45);
   font-size: 2em;
   margin: 4px 10px;
 }
 .fab:hover {
-  color: cornflowerblue;
+  color: var(--icon-hover-color);
 }
 .logo {
   max-width: 55px;
@@ -48,7 +48,7 @@ export default {
   margin-left: 10px;
 }
 .title {
-  color: white;
+  color: var(--font-color);
   font-weight: 900;
   align-self: center;
   font-size: 2.5em;

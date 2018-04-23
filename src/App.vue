@@ -6,27 +6,20 @@
 </template>
 
 <script>
-import {LOAD_GAME } from './store/store'
-import ManuBar from './components/ManuBar'
+import { LOAD_GAME } from "./store/store";
+import ManuBar from "./components/ManuBar";
 
 export default {
-  name: 'App',
+  name: "App",
   created() {
-    this.$store.dispatch({ type: LOAD_GAME})
+    this.$store.dispatch({ type: LOAD_GAME });
   },
-  components:{
+  components: {
     ManuBar
   }
-}
+};
 </script>
 
 <style>
-*{
-  margin:0;
-  padding:0
-}
-body{
-font-family: 'Varela Round', sans-serif;
-}
 
 </style>

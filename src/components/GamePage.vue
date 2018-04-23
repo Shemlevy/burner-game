@@ -2,7 +2,6 @@
   <transition name="fade">
     <div>
       <div v-if="!playrWin" class="questions-body">
-        <video-page></video-page>
         
         <div v-if="question" class="quest-container">
           <p key="quest" class="qust-body">{{question.body}}</p>
@@ -33,7 +32,6 @@ import {
   SET_QUEST
 } from "../store/store";
 import GameService from "../service/GameService";
-import VideoPage from "./VideoPage";
 import GameOver from "./GameOver";
 
 export default {
@@ -134,7 +132,6 @@ export default {
     }
   },
   components: {
-    VideoPage,
     GameOver
   }
 };
@@ -155,10 +152,10 @@ export default {
   direction: rtl;
   flex-flow: column;
   align-items: center;
-  color: white;
+  color: var(--font-color);
 }
 .qust-body {
-  background-color: #333;
+  background-color: var(--questions-color);
   cursor: default;
   text-align: center;
   clip-path: polygon(1% 0, 99% 10%, 100% 98%, 0 100%);
@@ -167,7 +164,7 @@ export default {
 }
 .answer {
   list-style-type: none;
-  background-color: rgba(255, 158, 67, 0.651);
+  background-color: var(--answers-color);
   clip-path: polygon(0% 22%, 100% 0%, 99% 98%, 0 100%);
   cursor: pointer;
   max-width: 60vw;
@@ -181,10 +178,10 @@ export default {
 }
 
 .answer:hover {
-  background-color: rgba(71, 243, 200, 0.719);
+  background-color: var(--answers-hover-color);
 }
 .right-answer {
-  background-color: rgba(255, 0, 0, 0.548);
+  background-color: var( --right-answer-color);
 }
 .categories {
   display: flex;
@@ -194,8 +191,8 @@ export default {
 }
 .categories h1 {
   margin: 2vw;
-  background-color: #333;
-  color: white;
+  background-color: var(--cat-color);
+  color: var(--font-color);
   padding: 1vw 1vw;
   clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 88%);
   font-size: 1em;
@@ -203,11 +200,11 @@ export default {
   transition: all 0.5s ease-in;
 }
 .fas {
-  color: #333;
+  color: var(--cat-color);
   transition: all 0.5s ease-in;
 }
 .completed {
-  color: white;
+  color: var(--font-color);
 }
 .cat-completed {
   border: 2px solid rgb(255, 238, 0) !important;

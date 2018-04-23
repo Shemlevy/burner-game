@@ -57,12 +57,12 @@ export default {
   display: flex;
 }
 .fab {
-  color: white;
+  color: var(--icon-color);
   font-size: 2.5em;
   margin: 0 1vw;
 }
 .fab:hover {
-  color: cornflowerblue;
+  color: var(--icon-hover-color);
 }
 .slide-fade-enter-active {
   transition: all 1s ease;

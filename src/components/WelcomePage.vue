@@ -27,7 +27,7 @@ export default {
   height: 100vh;
 }
 .desc {
-  color: white;
+  color: var(--font-color);
   padding: 100px 20px;
   text-align: right;
   background-color: rgba(0, 0, 0, 0.418);
@@ -38,9 +38,9 @@ export default {
   font-size: 2em;
   font-family: "Varela Round", sans-serif;
   font-weight: 900;
-  background-color: rgba(96, 226, 187, 0.726);
+  background-color: var(--btn-color);
   border: none;
-  color: white;
+  color: var(--font-color);
   border-radius: 10px;
   width: 160px;
   cursor: pointer;
@@ -51,7 +51,7 @@ export default {
   text-decoration: none;
 }
 .btn:hover{
-  background-color: rgb(146, 61, 89);
+  background-color: var(--btn-hover-color);
 }
 @media only screen and (max-width: 500px) {
   .btn{
