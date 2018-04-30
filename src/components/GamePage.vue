@@ -2,8 +2,8 @@
   <transition name="fade">
     <div>
       <div v-if="!playrWin" class="questions-body">
-        
         <div v-if="question" class="quest-container">
+        <button class="audioIcon" @click="toggleSound()"><i ref="audioIcon" class="fas fa-volume-up"></i></button>
           <p key="quest" class="qust-body">{{question.body}}</p>
           <transition-group name="list">
             <li  v-for="(answer,i) in question.answers" :key="i" class="answer" :value="answer.id"
@@ -46,12 +46,15 @@ export default {
       ],
       incheck: false,
       playrWin: false,
-      sound: null
+      sounds: { background: null, userWin: null, userWorng: null },
+      soundOn: true
     };
   },
   created() {
-    this.sound = new Audio("/static/audio/backgroundmusic.mp3");
-    this.sound.play();
+    this.sounds.background = new Audio("/static/audio/backgroundmusic.mp3");
+    this.sounds.userWin = new Audio("/static/audio/correct.m4a");
+    this.sounds.userWorng = new Audio("/static/audio/worng.wav");
+    this.sounds.background.play();
   },
   methods: {
     checkAnswer(id) {
@@ -65,17 +68,15 @@ export default {
       GameService.sendAnswer(answerJson, this.token)
         .then(res => {
           if (res.game_completed) {
-            this.sound.pause()
+            this.sounds.background.pause();
             this.playrWin = true;
             return;
           }
           if (res.response) {
-            let sound = new Audio("/static/audio/correct.m4a");
-            sound.play();
+            if (this.soundOn) this.sounds.userWin.play();
             this.getNextQuest(res);
           } else {
-            let sound = new Audio("/static/audio/worng.wav");
-            sound.play();
+            if (this.soundOn) this.sounds.userWorng.play();
             this.showRightAnswer(res);
           }
         })
@@ -83,7 +84,6 @@ export default {
           throw err;
         });
     },
-
     showRightAnswer(res) {
       let id = res.correct_answers[0].id;
       this.$refs.answer.forEach(element => {
@@ -96,7 +96,6 @@ export default {
         this.getNextQuest(res);
       }, 1000);
     },
-
     getNextQuest(res) {
       let nextCat = res.category_completed;
       if (nextCat) this.isCompleted(res);
@@ -109,6 +108,19 @@ export default {
       this.categories.forEach(cat => {
         if (cat.value === this.currCat) cat.completed = true;
       });
+    },
+    toggleSound() {
+      let audioIcon = this.$refs.audioIcon.classList;
+      if (this.soundOn) {
+        this.sounds.background.pause();
+        audioIcon.remove("fa-volume-up");
+        audioIcon.add("fa-volume-off");
+      } else {
+        this.sounds.background.play();
+        audioIcon.remove("fa-volume-off");
+        audioIcon.add("fa-volume-up");
+      }
+      this.soundOn = !this.soundOn;
     }
   },
   computed: {
@@ -169,6 +181,8 @@ export default {
   cursor: pointer;
   max-width: 60vw;
   transition: all 0.3s ease-in;
+  box-shadow: 2px 2px black;
+  box-shadow: 1px 1px 1px black;
 }
 
 .answer,
@@ -181,7 +195,7 @@ export default {
   background-color: var(--answers-hover-color);
 }
 .right-answer {
-  background-color: var( --right-answer-color);
+  background-color: var(--right-answer-color);
 }
 .categories {
   display: flex;
@@ -202,6 +216,18 @@ export default {
 .fas {
   color: var(--cat-color);
   transition: all 0.5s ease-in;
+}
+.audioIcon {
+  font-size: 1em;
+  outline: none;
+  cursor: pointer;
+  background: #f0f8ff00;
+  border: none;
+  align-self: end;
+  margin-right: 100px;
+}
+.fa-volume-up, .fa-volume-off {
+  color: var(--icon-color);
 }
 .completed {
   color: var(--font-color);

@@ -5,7 +5,7 @@
           <a href="https://www.facebook.com/midburns/" target="_blank"><i class="fab fa-facebook-square"></i></a>
           <a href="http://midburn.org/he-survival-guide/" target="_blank"><i class="fab fa-studiovinari"></i></a>
         </div>
-        <h1 class="title">מידברן - שאלון ההישרדות</h1>
+        <h1 class="title">Midburn - Survival Quiz</h1>
         <img class="logo" src="/static/img/logo.png"/>
       </div>
   </div>
@@ -22,7 +22,7 @@ export default {
 <style scoped>
 .main-container {
   padding: 5px 20px;
-  background-color: rgba(51, 51, 51, 0);
+  background-color: var(--nav-color);
   border-bottom: 1px solid white;
   position: absolute;
   width: 100%;
@@ -34,8 +34,11 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+.links {
+  margin-left: 2vw;
+}
 .fab {
-  color: rgb(51, 45, 45);
+  color: var(--icon-color);
   font-size: 2em;
   margin: 4px 10px;
 }
@@ -44,15 +47,14 @@ export default {
 }
 .logo {
   max-width: 55px;
-  margin-right: 5vw;
-  margin-left: 10px;
+  margin-right: 8vw;
 }
 .title {
   color: var(--font-color);
   font-weight: 900;
   align-self: center;
   font-size: 2.5em;
-  text-align: right;
+  font-family: "fantasy";
 }
 
 @media only screen and (max-width: 700px) {
@@ -60,7 +62,7 @@ export default {
     font-size: 1.5em;
   }
   .title {
-  font-size: 6vw;
-}
+    font-size: 6vw;
+  }
 }
 </style>

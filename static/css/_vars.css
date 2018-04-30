@@ -1,15 +1,15 @@
 :root{
     /* color vars */
     --header-color:rgb(55, 143, 102);
-    --nav-color: rgb(251, 255, 37);
+    --nav-color: rgba(154, 0, 27, 0.657);
     --nav-hover-color: black;
     --btn-color:#0ddf99;
     --btn-hover-color: orange;
     --questions-color: rgba(66, 68, 49, 0.493);
     --answers-color: rgba(37, 243, 250, 0.267);
-    --answers-hover-color: rgb(255, 115, 0);
-    --right-answer-color: rgb(136, 228, 124);
-    --cat-color: rgb(189, 34, 60);
+    --answers-hover-color: rgb(29, 180, 97);
+    --right-answer-color: rgb(255, 101, 142);
+    --cat-color: rgb(124, 37, 60);
     --icon-color:white;
     --icon-hover-color:cornflowerblue;
     --font-color: white;
